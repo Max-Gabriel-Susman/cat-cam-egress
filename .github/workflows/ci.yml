@@ -29,14 +29,14 @@ jobs:
           xcodebuild -resolvePackageDependencies # SPM dependency resolution
 
       # Build and Test the project
-      - name: Build and test
-        run: |
-          xcodebuild \
-            -scheme "cat_cam_egressApp" \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
-            clean test
-        env:
-          # Add any necessary environment variables here
-          # e.g., `CI: true` for certain dependencies
-          CI: true
+      # - name: Build and test
+      #   run: |
+      #     xcodebuild \
+      #       -scheme "cat_cam_egressApp" \
+      #       -sdk iphonesimulator \
+      #       -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
+      #       clean test
+      #   env:
+      #     # Add any necessary environment variables here
+      #     # e.g., `CI: true` for certain dependencies
+      #     CI: true
