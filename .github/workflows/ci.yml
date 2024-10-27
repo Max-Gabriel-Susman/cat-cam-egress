@@ -21,7 +21,7 @@ jobs:
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v2
         with:
-          xcode-version: '14.0' # Set to the Xcode version you need
+          xcode-version: '16.0' # Set to the Xcode version you need
 
       # Install dependencies if using SPM, CocoaPods, or Carthage
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
       - name: Build and test
         run: |
           xcodebuild \
-            -scheme "<YourSchemeName>" \
+            -scheme "cat_cam_egressApp" \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
             clean test
