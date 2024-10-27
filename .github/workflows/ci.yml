@@ -1,0 +1,42 @@
+name: iOS CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      # Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Xcode
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v2
+        with:
+          xcode-version: '14.0' # Set to the Xcode version you need
+
+      # Install dependencies if using SPM, CocoaPods, or Carthage
+      - name: Install dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies # SPM dependency resolution
+
+      # Build and Test the project
+      - name: Build and test
+        run: |
+          xcodebuild \
+            -scheme "<YourSchemeName>" \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
+            clean test
+        env:
+          # Add any necessary environment variables here
+          # e.g., `CI: true` for certain dependencies
+          CI: true
